@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-medicalsavingscalcul-dev-131603-authRole",
+            "UnauthRoleArn": "arn:aws:iam::477061009897:role/amplify-medicalsavingscalcul-dev-131603-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::477061009897:role/amplify-medicalsavingscalcul-dev-131603-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-medicalsavingscalcul-dev-131603-deployment",
+            "UnauthRoleName": "amplify-medicalsavingscalcul-dev-131603-unauthRole",
+            "StackName": "amplify-medicalsavingscalcul-dev-131603",
+            "StackId": "arn:aws:cloudformation:eu-west-1:477061009897:stack/amplify-medicalsavingscalcul-dev-131603/3d5211a0-eddf-11ea-a828-02174fa64a32",
+            "AmplifyAppId": "d39slxr2ed0ze2"
+        }
+    }
+}

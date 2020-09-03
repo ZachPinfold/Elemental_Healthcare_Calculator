@@ -1,0 +1,20 @@
+type CompetitorProduct @model {
+  id: ID!
+  productName: String!
+  competitorName: String!
+  cost: Float!
+  imageURL: String
+  description: String
+  environmentalImpact: Float
+}
+
+type ElementalProduct @model {
+  id: ID!
+  productName: String!
+  cost: Float!
+  imageURL: String
+  description: String
+  environmentalImpact: Float
+  marketArea: String
+  competitors: [CompetitorProduct] @connection
+}
