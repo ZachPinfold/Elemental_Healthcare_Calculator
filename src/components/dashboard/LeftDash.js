@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Product from "./Left-items/Product";
+import ProductSlider from "./Left-items/ProductSlider";
 import { getElementalProducts } from "../../actions/elementalProductActions";
 
 const LeftDash = ({ elementalProducts, getElementalProducts }) => {
@@ -10,7 +10,7 @@ const LeftDash = ({ elementalProducts, getElementalProducts }) => {
   return (
     <div>
       {elementalProducts.map(product => (
-        <Product key={product.id} {...product} />
+        <ProductSlider key={product.id} {...product} />
       ))}
     </div>
   );
