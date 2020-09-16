@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import Graph from "./Graph";
 
 const Card = styled.div`
-  height: 400px;
-  width: 300px;
+  height: 500px;
+  width: 400px;
   border-radius: 5px;
   position: absolute;
   margin: 0;
@@ -53,6 +54,7 @@ export default function CompetitorCard({ color, front, toggleFlipCard }) {
             <td>Company</td>
           </tr>
         </table>
+        <Graph />
       </div>
     </Card>
   );
