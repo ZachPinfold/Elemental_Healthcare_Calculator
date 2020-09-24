@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Graph from "./Graph";
+import { connect } from "react-redux";
+import { updateCompetitor } from "../../../actions/elementalProductActions";
 
 const Card = styled.div`
   height: 600px;
@@ -17,7 +19,18 @@ const Card = styled.div`
   transition: left 0.3s, top 0.5s;
 `;
 
-export default function CompetitorCard({ color, front, toggleFlipCard }) {
+const CompetitorCard = ({
+  color,
+  front,
+  toggleFlipCard,
+  elementalCompetitors,
+  updateCompetitor
+}) => {
+  const setCompetitor = e => {
+    console.log(e);
+    updateCompetitor(e);
+  };
+
   return (
     <Card
       onClick={() => {
@@ -28,11 +41,10 @@ export default function CompetitorCard({ color, front, toggleFlipCard }) {
     >
       <div className='card-icon'>Icon</div>
       <div className='card-content'>
-        <select name='' id=''>
-          <option value='volvo'>Volvo</option>
-          <option value='saab'>Saab</option>
-          <option value='mercedes'>Mercedes</option>
-          <option value='audi'>Audi</option>
+        <select onChange={e => setCompetitor(e.target.value)} name='' id=''>
+          {elementalCompetitors.map(comp => (
+            <option value={comp.name}>{comp.name}</option>
+          ))}
         </select>
         <table style={{ textAlign: "left", width: "100%" }}>
           <div
@@ -58,4 +70,10 @@ export default function CompetitorCard({ color, front, toggleFlipCard }) {
       </div>
     </Card>
   );
-}
+};
+
+const mstp = state => ({
+  elementalCompetitors: state.elementalProducts.elementalCompetitors
+});
+
+export default connect(mstp, { updateCompetitor })(CompetitorCard);

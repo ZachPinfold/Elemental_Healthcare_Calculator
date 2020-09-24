@@ -46,12 +46,12 @@ const Styles = styled.div`
   }
 `;
 
-const ProductSlider = ({ slideChange, name, competitorProducts }) => {
+const ProductSlider = ({ index, slideChange, name, competitorProducts }) => {
   const [value, setValue] = useState(0);
 
   const onSlideChange = e => {
     const toNum = parseInt(e);
-    slideChange(toNum, name);
+    slideChange(toNum, name, index);
   };
 
   return (

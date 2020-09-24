@@ -7,7 +7,7 @@ const LeftDash = ({ elementalProducts }) => {
   return (
     <div>
       {elementalProducts.map((product, index) => (
-        <ProductSlider key={index} {...product} />
+        <ProductSlider key={index} {...product} index={index} />
       ))}
     </div>
   );
