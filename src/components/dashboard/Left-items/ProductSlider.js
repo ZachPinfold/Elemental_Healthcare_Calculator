@@ -44,20 +44,25 @@ const Styles = styled.div`
   }
 `;
 
-export default function ProductSlider({ productName, description, color }) {
-  const [value, setValue] = useState(255);
+export default function ProductSlider({ name }) {
+  const [value, setValue] = useState(0);
+
+  const onSlideChange = () => {};
 
   return (
     <div>
-      {productName}
-      <Styles opacity={value > 15 ? value / 255 : 0.2} color={color}>
+      {name}
+      <Styles opacity={value > 15 ? value / 255 : 0.2} color={"color"}>
         <input
           type='range'
           min={0}
           max={255}
           value={value}
           className='slider'
-          onChange={e => setValue(e.target.value)}
+          onChange={e => {
+            setValue(e.target.value);
+            onSlideChange(e.target.value);
+          }}
         />
         <div className='value'>{value}</div>
       </Styles>

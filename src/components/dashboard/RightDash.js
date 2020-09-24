@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CompetitorCard from "./Right-items/CompetitorCard";
 
 export default function RightDash() {
-  const [flipCard, toggleFlipCard] = useState(false);
+  const [flipCard, toggleFlipCard] = useState(!false);
 
   const toggleFlip = () => {
     toggleFlipCard(!flipCard);

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Graph from "./Graph";
 
 const Card = styled.div`
-  height: 500px;
-  width: 400px;
+  height: 600px;
+  width: 450px;
   border-radius: 5px;
   position: absolute;
   margin: 0;

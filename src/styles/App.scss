@@ -1,0 +1,52 @@
+:root {
+  --blue: #009ade;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+@mixin centreEverything {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  */
+/*  */
+/* Main Dash */
+/*  */
+/*  */
+
+.main-dashboard-container {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+/*  */
+/*  */
+/* Card */
+/*  */
+/*  */
+
+.card-icon {
+  left: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+.card-content {
+  /* background-color: orange; */
+  text-align: center;
+  opacity: 0.7;
+  padding: 30px 15px;
+}
+
+td {
+  border-bottom: 1px black solid;
+}
+
+// Yo 

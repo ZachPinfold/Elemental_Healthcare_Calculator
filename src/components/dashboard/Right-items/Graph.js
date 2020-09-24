@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Bar } from "react-chartjs-2";
+import { connect } from "react-redux";
 
-export default function Graph() {
+const Graph = ({ competitorProducts }) => {
   const [labels, setLabels] = useState();
   const [data, setData] = useState({
-    labels: ["January", "February", "", "April", "May", "", "July", "August"],
+    labels: ["", "", "", "", "", "", "", "", "", "", ""],
     datasets: [
       {
         label: "My First dataset",
@@ -13,7 +14,9 @@ export default function Graph() {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(255,99,132,0.4)",
         hoverBorderColor: "rgba(255,99,132,1)",
-        data: [65, 56, 0, 80, 81, 0, 55, 40]
+        data: competitorProducts.map(competitor => {
+          return competitor.price;
+        })
       }
     ]
   });
@@ -24,11 +27,17 @@ export default function Graph() {
       <Bar
         data={data}
         width={100}
-        height={300}
+        height={450}
         options={{
           maintainAspectRatio: false
         }}
       />
     </div>
   );
-}
+};
+
+const mstp = state => ({
+  competitorProducts: state.elementalProducts.competitorProducts
+});
+
+export default connect(mstp, {})(Graph);

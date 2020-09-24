@@ -1,16 +1,13 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import ProductSlider from "./Left-items/ProductSlider";
-import { getElementalProducts } from "../../actions/elementalProductActions";
 
-const LeftDash = ({ elementalProducts, getElementalProducts }) => {
-  useEffect(() => {
-    getElementalProducts();
-  }, []);
+const LeftDash = ({ elementalProducts }) => {
+  console.log(elementalProducts);
   return (
     <div>
-      {elementalProducts.map(product => (
-        <ProductSlider key={product.id} {...product} />
+      {elementalProducts.map((product, index) => (
+        <ProductSlider key={index} {...product} />
       ))}
     </div>
   );
@@ -20,4 +17,4 @@ const mstp = state => ({
   elementalProducts: state.elementalProducts.elementalProducts
 });
 
-export default connect(mstp, { getElementalProducts })(LeftDash);
+export default connect(mstp, {})(LeftDash);
