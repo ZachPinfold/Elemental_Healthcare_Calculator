@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { slideChange } from "../../../actions/elementalProductActions";
+import { connect } from "react-redux";
 
-const sliderThumbStyles = props => `
+const sliderThumbStyles = () => `
  width: 25px;
  height: 25px;
  background: green;
@@ -44,28 +46,33 @@ const Styles = styled.div`
   }
 `;
 
-export default function ProductSlider({ name }) {
+const ProductSlider = ({ slideChange, name, competitorProducts }) => {
   const [value, setValue] = useState(0);
 
-  const onSlideChange = () => {};
+  const onSlideChange = e => {
+    const toNum = parseInt(e);
+    slideChange(toNum, name);
+  };
 
   return (
     <div>
       {name}
-      <Styles opacity={value > 15 ? value / 255 : 0.2} color={"color"}>
+      <Styles opacity={value > 15 ? value / 20 : 0.2} color={"color"}>
         <input
           type='range'
           min={0}
-          max={255}
+          max={20}
           value={value}
           className='slider'
-          onChange={e => {
-            setValue(e.target.value);
+          onMouseUp={e => {
             onSlideChange(e.target.value);
           }}
+          onChange={e => setValue(e.target.value)}
         />
         <div className='value'>{value}</div>
       </Styles>
     </div>
   );
-}
+};
+
+export default connect(null, { slideChange })(ProductSlider);

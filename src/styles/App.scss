@@ -7,6 +7,10 @@
   padding: 0px;
 }
 
+.card-content {
+  height: 10px;
+}
+
 @mixin centreEverything {
   display: flex;
   justify-content: center;

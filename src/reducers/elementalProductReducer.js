@@ -1,25 +1,25 @@
-import { GET_ELEMENTAL_PRODUCTS } from "../actions/types";
+import { GET_ELEMENTAL_PRODUCTS, UPDATE_GRAPH } from "../actions/types";
 
 const initialState = {
   loading: true,
   elementalProducts: [
-    { name: "product_1" },
-    { name: "product_2" },
-    { name: "product_3" },
-    { name: "product_4" }
+    { name: "elemental_product_1", price: 0 },
+    { name: "elemental_product_2", price: 0 },
+    { name: "elemental_product_3", price: 0 },
+    { name: "elemental_product_4", price: 0 }
   ],
-  competitorProducts: [
-    { name: "product_1", price: 3 },
-    { name: "product_2", price: 1 },
-    { name: "product_3", price: 0 },
-    { name: "product_4", price: 3 },
-    { name: "product_5", price: 3 },
-    { name: "product_5", price: 0 },
-    { name: "product_6", price: 3 },
-    { name: "product_5", price: 3 },
-    { name: "product_5", price: 0 },
-    { name: "product_5", price: 3 },
-    { name: "product_5", price: 3 }
+  products: [
+    { name: "elemental_product_1", quantity: 0 },
+    { name: "competitor_product_1", quantity: 0 },
+    { name: "product_3", quantity: 0 },
+    { name: "elemental_product_2", quantity: 0 },
+    { name: "competitor_product_2", quantity: 0 },
+    { name: "product_5", quantity: 0 },
+    { name: "elemental_product_3", quantity: 0 },
+    { name: "competitor_product_3", quantity: 0 },
+    { name: "product_5", quantity: 0 },
+    { name: "elemental_product_4", quantity: 0 },
+    { name: "competitor_product_4", quantity: 0 }
   ]
 };
 
@@ -31,6 +31,18 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         elementalProducts: payload
+      };
+    case UPDATE_GRAPH:
+      const num = payload.name.substr(payload.name.length - 1);
+      return {
+        ...state,
+        products: state.products.map(product =>
+          product.name === payload.name
+            ? { ...product, quantity: payload.num }
+            : product.name === `competitor_product_${num}`
+            ? { ...product, quantity: payload.num }
+            : product
+        )
       };
     default:
       return state;

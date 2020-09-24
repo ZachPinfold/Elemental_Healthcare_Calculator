@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Bar } from "react-chartjs-2";
 import { connect } from "react-redux";
 
-const Graph = ({ competitorProducts }) => {
-  const [labels, setLabels] = useState();
+const Graph = ({ products }) => {
   const [data, setData] = useState({
     labels: ["", "", "", "", "", "", "", "", "", "", ""],
     datasets: [
@@ -14,12 +13,17 @@ const Graph = ({ competitorProducts }) => {
         borderWidth: 1,
         hoverBackgroundColor: "rgba(255,99,132,0.4)",
         hoverBorderColor: "rgba(255,99,132,1)",
-        data: competitorProducts.map(competitor => {
-          return competitor.price;
-        })
+        data: null
       }
     ]
   });
+
+  useEffect(() => {
+    const data1 = products.map(competitor => {
+      return competitor.quantity;
+    });
+    setData({ ...data }, (data.datasets[0].data = data1));
+  }, [products]);
 
   return (
     <div>
@@ -29,7 +33,16 @@ const Graph = ({ competitorProducts }) => {
         width={100}
         height={450}
         options={{
-          maintainAspectRatio: false
+          maintainAspectRatio: false,
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true
+                }
+              }
+            ]
+          }
         }}
       />
     </div>
@@ -37,7 +50,7 @@ const Graph = ({ competitorProducts }) => {
 };
 
 const mstp = state => ({
-  competitorProducts: state.elementalProducts.competitorProducts
+  products: state.elementalProducts.products
 });
 
 export default connect(mstp, {})(Graph);
